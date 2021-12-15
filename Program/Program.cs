@@ -1,4 +1,5 @@
 ﻿using System;
+using NLog;
 using Shapes;
 
 namespace ShapesCreator
@@ -7,11 +8,26 @@ namespace ShapesCreator
     {
         public static void Main()
         {
-            var square = new Square(5);
-            Console.WriteLine(square);
+            var logger = LogManager.GetCurrentClassLogger();
 
-            var circle = new Circle(10);
-            Console.WriteLine(circle);
+            logger.Info("Programm start");
+
+            try
+            {
+                var sideLength = 5;
+
+                logger.Debug($"В конструктор Square() передано значение: {sideLength}");
+
+                var square = new Square(sideLength);
+                Console.WriteLine(square);
+
+                var circle = new Circle(-10);
+                Console.WriteLine(circle);
+            }
+            catch(ArgumentException e) 
+            {
+                logger.Error(e, "Ошибка ввода");
+            }
 
             Console.ReadKey();
         }

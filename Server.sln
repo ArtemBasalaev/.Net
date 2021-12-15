@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Excel", "Excel\Excel.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonReader", "JsonReader\JsonReader.csproj", "{9C7A477C-04E0-4A69-A23E-BE3FD8519DDF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorTask", "VectorTask\VectorTask.csproj", "{F8F424C1-EF02-44A3-8715-5E96AF9772A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringOccurrence", "StringOccurrence\StringOccurrence.csproj", "{B3AE56BC-30E6-4341-8467-3660800BDB5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{9C7A477C-04E0-4A69-A23E-BE3FD8519DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C7A477C-04E0-4A69-A23E-BE3FD8519DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C7A477C-04E0-4A69-A23E-BE3FD8519DDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F424C1-EF02-44A3-8715-5E96AF9772A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F424C1-EF02-44A3-8715-5E96AF9772A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F424C1-EF02-44A3-8715-5E96AF9772A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F424C1-EF02-44A3-8715-5E96AF9772A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3AE56BC-30E6-4341-8467-3660800BDB5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3AE56BC-30E6-4341-8467-3660800BDB5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3AE56BC-30E6-4341-8467-3660800BDB5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3AE56BC-30E6-4341-8467-3660800BDB5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
