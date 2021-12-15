@@ -1,7 +1,7 @@
 ﻿using System;
 using Shapes;
 
-namespace Program
+namespace ShapesCreator
 {
     public class Program
     {
