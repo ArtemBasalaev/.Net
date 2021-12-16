@@ -19,17 +19,17 @@ namespace DataBase
             Console.WriteLine($"В таблице products хранится {productsCount} товаров");
 
             var sqlCommand2 = "INSERT INTO dbo.products(name, price, categoryId) " +
-                                    "VALUES ('наушники HD660', 27550.00, 1)";
+                                    "VALUES (N'наушники HD660', 27550.00, 1)";
             command = new SqlCommand(sqlCommand2, connection);
             command.ExecuteNonQuery();
 
             var sqlCommand3 = "INSERT INTO dbo.categories(name) " +
-                                    "VALUES ('автотовары')";
+                                    "VALUES (N'автотовары')";
             command = new SqlCommand(sqlCommand3, connection);
             command.ExecuteNonQuery();
 
             var sqlCommand4 = "UPDATE dbo.products " +
-                                    "SET name = 'газонокосилка HN-1/02', price = 1720.00 " +
+                                    "SET name = N'газонокосилка HN-1/02', price = 1720.00 " +
                                     "WHERE id = 1";
             command = new SqlCommand(sqlCommand4, connection);
             command.ExecuteNonQuery();
