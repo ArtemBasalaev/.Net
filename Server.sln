@@ -15,7 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapesCreator", "ShapesCrea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestVector", "TestVector\TestVector.csproj", "{F88FD6D1-0B7F-4849-9A10-E26ADB135A8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBase", "DataBase\DataBase.csproj", "{E93C0D78-ADDD-4C4E-8EFB-A8B4190ABAB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBase", "DataBase\DataBase.csproj", "{E93C0D78-ADDD-4C4E-8EFB-A8B4190ABAB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction", "Transaction\Transaction.csproj", "{25E7BFFA-F24B-4462-BC3A-EEF2EA0716E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{E93C0D78-ADDD-4C4E-8EFB-A8B4190ABAB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E93C0D78-ADDD-4C4E-8EFB-A8B4190ABAB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E93C0D78-ADDD-4C4E-8EFB-A8B4190ABAB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25E7BFFA-F24B-4462-BC3A-EEF2EA0716E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25E7BFFA-F24B-4462-BC3A-EEF2EA0716E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25E7BFFA-F24B-4462-BC3A-EEF2EA0716E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25E7BFFA-F24B-4462-BC3A-EEF2EA0716E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
