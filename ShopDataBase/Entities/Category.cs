@@ -8,6 +8,6 @@ namespace ShopDataBase.Entities
 
         public string Name { get; set; }
         
-        public virtual List<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
+        public virtual List<ProductCategory> ProductCategories { get; set; } = new();
     }
 }

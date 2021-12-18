@@ -14,6 +14,6 @@ namespace ShopDataBase.Entities
 
         public string Mail { get; set; }
 
-        public virtual List<Order> Orders { get; set; } = new List<Order>();
+        public virtual List<Order> Orders { get; set; } = new();
     }
 }

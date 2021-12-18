@@ -10,8 +10,8 @@ namespace ShopDataBase.Entities
 
         public double Price { get; set; }
 
-        public virtual List<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
+        public virtual List<ProductCategory> ProductCategories { get; set; } = new();
 
-        public virtual List<OrderDetails> OrderDetailsList { get; set; } = new List<OrderDetails>();
+        public virtual List<OrderDetails> OrderDetailsList { get; set; } = new();
     }
 }
