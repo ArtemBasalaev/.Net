@@ -66,6 +66,14 @@ namespace ShopDataBase
             db.Entry(categoryToDelete).State = EntityState.Deleted;
             db.SaveChanges();
 
+            //var category = db.Categories.FirstOrDefault(c => c.Id == 3);
+
+            //if (category != null)
+            //{
+            //    db.Categories.Remove(category);
+            //    db.SaveChanges();
+            //}
+
             var product2 = db.Products.FirstOrDefault(p => p.Name == "усилитель HD-20");
 
             if (product2 != null)
@@ -118,7 +126,7 @@ namespace ShopDataBase
                 Console.WriteLine(product);
             }
 
-            //запрос 2
+            // запрос 2
             var ordersTotalSumByClients = db.Customers
                             .Include(c => c.Orders)
                                 .ThenInclude(o => o.OrderDetailsList)
@@ -135,12 +143,12 @@ namespace ShopDataBase
                 Console.WriteLine($"{c.Key.FistName} {c.Key.LastName}: {c.Value} руб.");
             }
 
-            //запрос 3
+            // запрос 3
             var ordersTotalSumByCategories = db.Categories
                 .Include(c => c.ProductCategories)
                     .ThenInclude(pc => pc.Product)
                         .ThenInclude(p => p.OrderDetailsList)
-                .ToDictionary(c => c, c => c.ProductCategories
+                .ToDictionary(c => c.Name, c => c.ProductCategories
                     .Select(pc => pc.Product.OrderDetailsList.Count)
                     .Sum());
 
@@ -148,7 +156,7 @@ namespace ShopDataBase
 
             foreach (var c in ordersTotalSumByCategories)
             {
-                Console.WriteLine($"{c.Key.Name} - {c.Value} шт.");
+                Console.WriteLine($"{c.Key} - {c.Value} шт.");
             }
         }
     }
