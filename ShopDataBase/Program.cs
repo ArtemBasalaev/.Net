@@ -90,13 +90,15 @@ namespace ShopDataBase
             var mostPopularProduct = db.Products
                 .Include(p => p.OrderDetailsList)
                 .OrderByDescending(p => p.OrderDetailsList.Count)
-                .Take(1);
+                .Take(1)
+                .Select(p => p.Name)
+                .ToList();
 
             Console.WriteLine("Наиболее популярный продукт: ");
 
             foreach (var product in mostPopularProduct)
             {
-                Console.WriteLine(product.Name);
+                Console.WriteLine(product);
             }
 
             // запрос 1: вариант 2
@@ -109,7 +111,7 @@ namespace ShopDataBase
                 .Where(p => p.OrderDetailsList.Count == ordersMaxCountByProducts)
                 .Select(p => p.Name);
 
-            Console.WriteLine("Наиболее популярные продукты: ");
+            Console.WriteLine("Наиболее популярный продукт: ");
 
             foreach (var product in mostPopularProducts)
             {
