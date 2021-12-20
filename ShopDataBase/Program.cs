@@ -100,13 +100,11 @@ namespace ShopDataBase
                 .OrderByDescending(p => p.OrderDetailsList.Count)
                 .Take(1)
                 .Select(p => p.Name)
-                .ToList();
+                .SingleOrDefault();
 
-            Console.WriteLine("Наиболее популярный продукт: ");
-
-            foreach (var product in mostPopularProduct)
+            if (mostPopularProduct != null)
             {
-                Console.WriteLine(product);
+                Console.WriteLine($"Наиболее популярный продукт: {mostPopularProduct}");
             }
 
             // запрос 1: вариант 2

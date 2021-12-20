@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transaction", "Transaction\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopDataBase", "ShopDataBase\ShopDataBase.csproj", "{3DAA8C1A-D5D7-4E11-8D49-188249EAAA89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopMigration", "ShopMigration\ShopMigration.csproj", "{A271C1AC-405A-4F5C-B3DA-C67A64B44358}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopMigration", "ShopMigration\ShopMigration.csproj", "{A271C1AC-405A-4F5C-B3DA-C67A64B44358}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestScaffold", "TestScaffold\TestScaffold.csproj", "{6A325747-FEC3-4914-BBA0-A2A9BC6C5737}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestScaffold", "TestScaffold\TestScaffold.csproj", "{6A325747-FEC3-4914-BBA0-A2A9BC6C5737}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitOfWork", "UnitOfWork\UnitOfWork.csproj", "{8E4150B6-6911-454B-8B14-E5BB2D860248}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{6A325747-FEC3-4914-BBA0-A2A9BC6C5737}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A325747-FEC3-4914-BBA0-A2A9BC6C5737}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A325747-FEC3-4914-BBA0-A2A9BC6C5737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E4150B6-6911-454B-8B14-E5BB2D860248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E4150B6-6911-454B-8B14-E5BB2D860248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E4150B6-6911-454B-8B14-E5BB2D860248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E4150B6-6911-454B-8B14-E5BB2D860248}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
