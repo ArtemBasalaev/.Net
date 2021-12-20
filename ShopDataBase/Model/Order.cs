@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ShopDataBase.Entities
+namespace ShopDataBase.Model
 {
     public class Order
     {

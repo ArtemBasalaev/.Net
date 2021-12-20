@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ShopDataBase.Entities;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using ShopDataBase.Model;
 
 namespace ShopDataBase
 {

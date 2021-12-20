@@ -1,4 +1,4 @@
-﻿namespace ShopDataBase.Entities
+﻿namespace ShopDataBase.Model
 {
     public class ProductCategory
     {

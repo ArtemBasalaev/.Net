@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using ShopDataBase.Entities;
+using ShopDataBase.Model;
 
 namespace ShopDataBase
 {
@@ -107,7 +107,7 @@ namespace ShopDataBase
 
             // запрос 1: вариант 2
             var products = db.Products.ToList();
-
+            
             var ordersMaxCountByProducts = products
                 .Max(p => p.OrderDetailsList.Count);
 
