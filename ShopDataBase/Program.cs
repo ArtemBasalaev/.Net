@@ -98,9 +98,8 @@ namespace ShopDataBase
             var mostPopularProduct = db.Products
                 .Include(p => p.OrderDetailsList)
                 .OrderByDescending(p => p.OrderDetailsList.Count)
-                .Take(1)
                 .Select(p => p.Name)
-                .SingleOrDefault();
+                .FirstOrDefault();
 
             if (mostPopularProduct != null)
             {
@@ -122,6 +121,16 @@ namespace ShopDataBase
             foreach (var product in mostPopularProducts)
             {
                 Console.WriteLine(product);
+            }
+
+            // запрос 1: вариант 3
+            var mostPopularProduct1 = products
+                .OrderByDescending(p => p.OrderDetailsList.Count)
+                .FirstOrDefault();
+
+            if (mostPopularProduct1 != null)
+            {
+                Console.WriteLine($"Наиболее популярный продукт: {mostPopularProduct1}");
             }
 
             // запрос 2

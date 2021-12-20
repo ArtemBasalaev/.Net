@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace UnitOfWork.Model
@@ -13,13 +11,11 @@ namespace UnitOfWork.Model
 
         public Product GetMostPopularProduct()
         {
-            var mostPopularProduct = DbSet
+            return DbSet
                 .Include(p => p.OrderDetailsList)
                 .OrderByDescending(p => p.OrderDetailsList.Count)
                 .Take(1)
                 .SingleOrDefault();
-
-            return mostPopularProduct;
         }
     }
 }
