@@ -126,6 +126,7 @@ namespace ShopDataBase
             // запрос 1: вариант 3
             var mostPopularProduct1 = products
                 .OrderByDescending(p => p.OrderDetailsList.Count)
+                .Select(p => p.Name)
                 .FirstOrDefault();
 
             if (mostPopularProduct1 != null)
