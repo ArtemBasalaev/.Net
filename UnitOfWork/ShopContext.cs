@@ -19,7 +19,9 @@ namespace UnitOfWork
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer("Data Source=.;Initial Catalog=Shop;Integrated Security=true;TrustServerCertificate=True");
+            options
+                .UseLazyLoadingProxies()
+                .UseSqlServer("Data Source=.;Initial Catalog=Shop;Integrated Security=true;TrustServerCertificate=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

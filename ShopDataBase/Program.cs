@@ -96,7 +96,6 @@ namespace ShopDataBase
 
             // запрос 1: вариант 1
             var mostPopularProduct = db.Products
-                .Include(p => p.OrderDetailsList)
                 .OrderByDescending(p => p.OrderDetailsList.Count)
                 .Select(p => p.Name)
                 .FirstOrDefault();
@@ -138,7 +137,6 @@ namespace ShopDataBase
             var ordersTotalSumByClients = db.Customers
                             .Include(c => c.Orders)
                                 .ThenInclude(o => o.OrderDetailsList)
-                                    .ThenInclude(od => od.Product)
                             .ToDictionary(c => c, c => c.Orders
                                 .Select(o => o.OrderDetailsList
                                     .Sum(od => od.Product.Price))
@@ -155,7 +153,6 @@ namespace ShopDataBase
             var ordersTotalSumByCategories = db.Categories
                 .Include(c => c.ProductCategories)
                     .ThenInclude(pc => pc.Product)
-                        .ThenInclude(p => p.OrderDetailsList)
                 .ToDictionary(c => c.Name, c => c.ProductCategories
                     .Select(pc => pc.Product.OrderDetailsList.Count)
                     .Sum());

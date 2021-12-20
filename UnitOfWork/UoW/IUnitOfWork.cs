@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UnitOfWork.Model
+namespace UnitOfWork.UoW
 {
     public interface IUnitOfWork : IDisposable
     {

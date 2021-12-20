@@ -1,15 +1,15 @@
-﻿namespace UnitOfWork.Model
+﻿namespace UnitOfWork.UoW
 {
     public interface IRepository<T> where T : class
     {
-        void Create (T entity);
-        
+        void Create(T entity);
+
         void Delete(T entity);
 
         void Update(T entity);
 
         T[] GetAll();
 
-        T GetById (int id);
+        T GetById(int id);
     }
 }

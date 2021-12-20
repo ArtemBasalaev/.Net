@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace UnitOfWork.Model
+namespace UnitOfWork.UoW
 {
     public class BaseEfRepository<T> : IRepository<T> where T : class
     {

@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using UnitOfWork.Model;
 
-namespace UnitOfWork.Model
+namespace UnitOfWork.UoW
 {
     public class ProductRepository : BaseEfRepository<Product>, IProductRepository
     {
@@ -12,10 +13,14 @@ namespace UnitOfWork.Model
         public Product GetMostPopularProduct()
         {
             return DbSet
-                .Include(p => p.OrderDetailsList)
                 .OrderByDescending(p => p.OrderDetailsList.Count)
-                .Take(1)
-                .SingleOrDefault();
+                .FirstOrDefault();
+        }
+        public Product GetMostUnpopularProduct()
+        {
+            return DbSet
+                .OrderBy(p => p.OrderDetailsList.Count)
+                .FirstOrDefault();
         }
     }
 }
