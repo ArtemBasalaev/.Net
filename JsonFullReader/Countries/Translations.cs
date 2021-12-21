@@ -1,4 +1,4 @@
-﻿namespace JsonReader.Countries
+﻿namespace JsonFullReader.Countries
 {
     public class Translations
     {

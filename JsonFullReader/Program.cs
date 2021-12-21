@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using JsonReader.Countries;
-using Newtonsoft.Json;
 using System.Linq;
+using JsonFullReader.Countries;
+using Newtonsoft.Json;
 
-namespace JsonReader
+namespace JsonFullReader
 {
     public class Program
     {

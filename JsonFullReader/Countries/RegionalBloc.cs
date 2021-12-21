@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace JsonReader.Countries
+namespace JsonFullReader.Countries
 {
     public class RegionalBloc
     {

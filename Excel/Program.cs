@@ -14,6 +14,7 @@ namespace Excel
             var personsList = new List<Person>
             {
                 new() {FirstName = "Ivan", LastName = "Ivanov", Age = 25, Phone = "2125036"},
+                
                 new() {FirstName = "Anton", LastName = "Petrov", Age = 23, Phone = "2125569"},
                 new() {FirstName = "Denis", LastName = "Sidorov", Age = 35, Phone = "2125255"}
             };
@@ -37,7 +38,6 @@ namespace Excel
             worksheet.Cells[tableHead].Style.Font.Bold = true;
             worksheet.Cells[tableHead].Style.Fill.PatternType = ExcelFillStyle.Solid;
             worksheet.Cells[tableHead].Style.Fill.BackgroundColor.SetColor(Color.Orange);
-            worksheet.Cells[tableHead].AutoFitColumns();
 
             worksheet.Cells["A2"].LoadFromCollection(personsList);
 
