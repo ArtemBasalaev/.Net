@@ -15,7 +15,7 @@ namespace Excel
             {
                 new() {FirstName = "Ivan", LastName = "Ivanov", Age = 25, Phone = "2125036"},
                 new() {FirstName = "Anton", LastName = "Petrov", Age = 23, Phone = "2125569"},
-                new() {FirstName = "Denis", LastName = "Sidorov", Age = 35, Phone = "2125297"}
+                new() {FirstName = "Denis", LastName = "Sidorov", Age = 35, Phone = "2125255"}
             };
 
             using var excelPackage = new ExcelPackage();
@@ -46,7 +46,10 @@ namespace Excel
                 worksheet.Column(i).Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
             }
 
-            worksheet.Cells[1, 1, personsList.Count + 1, 4].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+            var table = worksheet.Cells[1, 1, personsList.Count + 1, 4];
+
+            table.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+            table.AutoFitColumns();
 
             var outputWorkBook = new FileInfo("file.xlsx");
             excelPackage.SaveAs(outputWorkBook);
