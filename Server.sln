@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shapes", "Shapes\Shapes.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Excel", "Excel\Excel.csproj", "{B0FF4234-15A9-4827-B2B8-AD9885547840}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonReader", "JsonReader\JsonReader.csproj", "{9C7A477C-04E0-4A69-A23E-BE3FD8519DDF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VectorTask", "VectorTask\VectorTask.csproj", "{F8F424C1-EF02-44A3-8715-5E96AF9772A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapesCreator", "ShapesCreator\ShapesCreator.csproj", "{93680877-6668-4474-87B2-AB4C45E68E02}"
@@ -25,7 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopMigration", "ShopMigrat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestScaffold", "TestScaffold\TestScaffold.csproj", "{6A325747-FEC3-4914-BBA0-A2A9BC6C5737}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitOfWork", "UnitOfWork\UnitOfWork.csproj", "{8E4150B6-6911-454B-8B14-E5BB2D860248}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitOfWork", "UnitOfWork\UnitOfWork.csproj", "{8E4150B6-6911-454B-8B14-E5BB2D860248}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonFullReader", "JsonFullReader\JsonFullReader.csproj", "{F4049D71-947E-4930-96A6-52654D40EE39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonReader", "JsonReader\JsonReader.csproj", "{206812AD-9A65-4F4A-9BCF-28F45CBE6267}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +43,6 @@ Global
 		{B0FF4234-15A9-4827-B2B8-AD9885547840}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0FF4234-15A9-4827-B2B8-AD9885547840}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0FF4234-15A9-4827-B2B8-AD9885547840}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C7A477C-04E0-4A69-A23E-BE3FD8519DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C7A477C-04E0-4A69-A23E-BE3FD8519DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C7A477C-04E0-4A69-A23E-BE3FD8519DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C7A477C-04E0-4A69-A23E-BE3FD8519DDF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F8F424C1-EF02-44A3-8715-5E96AF9772A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F8F424C1-EF02-44A3-8715-5E96AF9772A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8F424C1-EF02-44A3-8715-5E96AF9772A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,6 +79,14 @@ Global
 		{8E4150B6-6911-454B-8B14-E5BB2D860248}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E4150B6-6911-454B-8B14-E5BB2D860248}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E4150B6-6911-454B-8B14-E5BB2D860248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4049D71-947E-4930-96A6-52654D40EE39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4049D71-947E-4930-96A6-52654D40EE39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4049D71-947E-4930-96A6-52654D40EE39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4049D71-947E-4930-96A6-52654D40EE39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{206812AD-9A65-4F4A-9BCF-28F45CBE6267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206812AD-9A65-4F4A-9BCF-28F45CBE6267}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206812AD-9A65-4F4A-9BCF-28F45CBE6267}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206812AD-9A65-4F4A-9BCF-28F45CBE6267}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
