@@ -14,7 +14,6 @@ namespace Excel
             var personsList = new List<Person>
             {
                 new() {FirstName = "Ivan", LastName = "Ivanov", Age = 25, Phone = "2125036"},
-                
                 new() {FirstName = "Anton", LastName = "Petrov", Age = 23, Phone = "2125569"},
                 new() {FirstName = "Denis", LastName = "Sidorov", Age = 35, Phone = "2125255"}
             };
