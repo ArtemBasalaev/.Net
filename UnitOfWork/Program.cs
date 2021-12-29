@@ -14,10 +14,14 @@ namespace UnitOfWork
             var categoryRepository = uow.GetRepository<ICategoryRepository>();
             var productCategoryRepository = uow.GetRepository<IProductCategoryRepository>();
 
+            uow.BeginTransaction();
+
             categoryRepository.Create(new Category { Name = "Бытовая техника" });
             productRepository.Create(new Product { Name = "Утюг Tefal", Price = 5600 });
 
             uow.Save();
+
+            uow.BeginTransaction();
 
             productCategoryRepository.Create(new ProductCategory { CategoryId = 4, ProductId = 6 });
 
