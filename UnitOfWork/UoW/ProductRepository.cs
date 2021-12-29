@@ -13,13 +13,13 @@ namespace UnitOfWork.UoW
         public Product GetMostPopularProduct()
         {
             return DbSet
-                .OrderByDescending(p => p.OrderDetailsList.Count)
+                .OrderByDescending(p => p.OrderDetailsList.Sum(od => od.Quantity))
                 .FirstOrDefault();
         }
         public Product GetMostUnpopularProduct()
         {
             return DbSet
-                .OrderBy(p => p.OrderDetailsList.Count)
+                .OrderBy(p => p.OrderDetailsList.Sum(od => od.Quantity))
                 .FirstOrDefault();
         }
     }
