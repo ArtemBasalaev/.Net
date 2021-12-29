@@ -39,19 +39,19 @@ namespace ShopMigration
 
             db.Customers.Add(new Customer
             {
-                FistName = "Иван",
+                FirstName = "Иван",
                 LastName = "Иванов",
                 Phone = "2835645",
-                Mail = "ivan@mail.ru",
+                Email = "ivan@mail.ru",
                 BirthDate = new DateTime(1980, 7, 25)
             });
 
             db.Customers.Add(new Customer
             {
-                FistName = "Петр",
+                FirstName = "Петр",
                 LastName = "Петров",
                 Phone = "2548563",
-                Mail = "petr@mail.ru",
+                Email = "petr@mail.ru",
                 BirthDate = new DateTime(1989, 2, 15)
             });
 

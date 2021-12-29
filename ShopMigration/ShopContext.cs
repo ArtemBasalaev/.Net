@@ -6,11 +6,11 @@ namespace ShopMigration
     public class ShopContext : DbContext
     {
         public DbSet<Category> Categories { get; set; }
-        
+
         public DbSet<ProductCategory> ProductsCategoriesList { get; set; }
 
         public DbSet<Product> Products { get; set; }
-        
+
         public DbSet<OrderDetails> OrderDetailsList { get; set; }
 
         public DbSet<Order> Orders { get; set; }
@@ -20,22 +20,13 @@ namespace ShopMigration
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options
-                .UseLazyLoadingProxies()
-                .UseSqlServer("Data Source=.;Initial Catalog=ShopMigration;Integrated Security=true;TrustServerCertificate=True");
+                .UseSqlServer("Data Source=.;Initial Catalog=Shop;Integrated Security=true;TrustServerCertificate=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProductCategory>(b =>
             {
-                b.ToTable("ProductCategoryList");
-
-                b.Property(pc => pc.CategoryId)
-                    .IsRequired();
-
-                b.Property(pc => pc.ProductId)
-                    .IsRequired();
-
                 b.HasOne(pc => pc.Category)
                     .WithMany(c => c.ProductCategories)
                     .HasForeignKey(pc => pc.CategoryId);
@@ -58,20 +49,11 @@ namespace ShopMigration
                     .IsRequired()
                     .HasMaxLength(100);
 
-                b.Property(c => c.Price)
-                    .IsRequired();
+                b.Property(p => p.Price).HasPrecision(10, 2);
             });
 
             modelBuilder.Entity<OrderDetails>(b =>
             {
-                b.ToTable("OrderDetails");
-
-                b.Property(od => od.ProductId)
-                    .IsRequired();
-
-                b.Property(od => od.OrderId)
-                    .IsRequired();
-
                 b.HasOne(od => od.Order)
                     .WithMany(o => o.OrderDetailsList)
                     .HasForeignKey(od => od.OrderId);
@@ -83,11 +65,7 @@ namespace ShopMigration
 
             modelBuilder.Entity<Order>(b =>
             {
-                b.Property(o => o.Date)
-                    .IsRequired();
-
-                b.Property(od => od.CustomerId)
-                    .IsRequired();
+                b.Property(od => od.Date).HasDefaultValueSql("GETUTCDATE()");
 
                 b.HasOne(od => od.Customer)
                     .WithMany(c => c.Orders)
@@ -96,7 +74,7 @@ namespace ShopMigration
 
             modelBuilder.Entity<Customer>(b =>
             {
-                b.Property(c => c.FistName)
+                b.Property(c => c.FirstName)
                     .HasMaxLength(50)
                     .IsRequired();
 
@@ -108,7 +86,7 @@ namespace ShopMigration
                     .HasMaxLength(15)
                     .IsRequired();
 
-                b.Property(c => c.Phone)
+                b.Property(c => c.Email)
                     .HasMaxLength(100)
                     .IsRequired();
             });

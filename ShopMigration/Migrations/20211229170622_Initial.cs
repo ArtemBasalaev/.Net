@@ -26,10 +26,10 @@ namespace ShopMigration.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FistName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Mail = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Phone = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -43,7 +43,7 @@ namespace ShopMigration.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Price = table.Column<double>(type: "float", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,7 +56,7 @@ namespace ShopMigration.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     CustomerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -71,7 +71,7 @@ namespace ShopMigration.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductCategoryList",
+                name: "ProductsCategoriesList",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -81,15 +81,15 @@ namespace ShopMigration.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductCategoryList", x => x.Id);
+                    table.PrimaryKey("PK_ProductsCategoriesList", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProductCategoryList_Categories_CategoryId",
+                        name: "FK_ProductsCategoriesList_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductCategoryList_Products_ProductId",
+                        name: "FK_ProductsCategoriesList_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -97,25 +97,26 @@ namespace ShopMigration.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderDetails",
+                name: "OrderDetailsList",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderId = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false)
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderDetails", x => x.Id);
+                    table.PrimaryKey("PK_OrderDetailsList", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrderDetails_Orders_OrderId",
+                        name: "FK_OrderDetailsList_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderDetails_Products_ProductId",
+                        name: "FK_OrderDetailsList_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -123,13 +124,13 @@ namespace ShopMigration.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_OrderId",
-                table: "OrderDetails",
+                name: "IX_OrderDetailsList_OrderId",
+                table: "OrderDetailsList",
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_ProductId",
-                table: "OrderDetails",
+                name: "IX_OrderDetailsList_ProductId",
+                table: "OrderDetailsList",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
@@ -138,23 +139,23 @@ namespace ShopMigration.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductCategoryList_CategoryId",
-                table: "ProductCategoryList",
+                name: "IX_ProductsCategoriesList_CategoryId",
+                table: "ProductsCategoriesList",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductCategoryList_ProductId",
-                table: "ProductCategoryList",
+                name: "IX_ProductsCategoriesList_ProductId",
+                table: "ProductsCategoriesList",
                 column: "ProductId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "OrderDetails");
+                name: "OrderDetailsList");
 
             migrationBuilder.DropTable(
-                name: "ProductCategoryList");
+                name: "ProductsCategoriesList");
 
             migrationBuilder.DropTable(
                 name: "Orders");

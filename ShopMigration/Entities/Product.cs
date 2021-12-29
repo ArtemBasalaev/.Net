@@ -8,7 +8,7 @@ namespace ShopMigration.Entities
 
         public string Name { get; set; }
 
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
         public virtual List<ProductCategory> ProductCategories { get; set; } = new();
 
