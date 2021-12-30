@@ -14,6 +14,5 @@ namespace ShopDataBase.Model
         public virtual Customer Customer { get; set; }
 
         public virtual List<OrderDetails> OrderDetailsList { get; set; } = new();
-
     }
 }

@@ -36,23 +36,35 @@ namespace ShopDataBase
             db.SaveChanges();
 
             db.Customers.Add(new Customer
-            { FistName = "Иван", LastName = "Иванов", Phone = "2835645", Mail = "ivan@mail.ru" });
+            {
+                FirstName = "Иван",
+                LastName = "Иванов",
+                Phone = "2835645",
+                Email = "ivan@mail.ru"
+            });
+
             db.Customers.Add(new Customer
-            { FistName = "Петр", LastName = "Петров", Phone = "2548563", Mail = "petr@mail.ru" });
+            {
+                FirstName = "Петр",
+                LastName = "Петров",
+                Phone = "2548563",
+                Email = "petr@mail.ru"
+            });
+
             db.SaveChanges();
 
-            db.Orders.Add(new Order { Date = DateTime.Now, CustomerId = 1 });
-            db.Orders.Add(new Order { Date = DateTime.Now, CustomerId = 2 });
-            db.Orders.Add(new Order { Date = DateTime.Now, CustomerId = 2 });
+            db.Orders.Add(new Order { Date = DateTime.UtcNow, CustomerId = 1 });
+            db.Orders.Add(new Order { Date = DateTime.UtcNow, CustomerId = 2 });
+            db.Orders.Add(new Order { Date = DateTime.UtcNow, CustomerId = 2 });
             db.SaveChanges();
 
-            db.OrderDetailsList.Add(new OrderDetails { OrderId = 1, ProductId = 2 });
-            db.OrderDetailsList.Add(new OrderDetails { OrderId = 1, ProductId = 3 });
-            db.OrderDetailsList.Add(new OrderDetails { OrderId = 1, ProductId = 5 });
-            db.OrderDetailsList.Add(new OrderDetails { OrderId = 2, ProductId = 1 });
-            db.OrderDetailsList.Add(new OrderDetails { OrderId = 2, ProductId = 3 });
-            db.OrderDetailsList.Add(new OrderDetails { OrderId = 2, ProductId = 4 });
-            db.OrderDetailsList.Add(new OrderDetails { OrderId = 3, ProductId = 2 });
+            db.OrderDetailsList.Add(new OrderDetails { OrderId = 1, ProductId = 2, Quantity = 2 });
+            db.OrderDetailsList.Add(new OrderDetails { OrderId = 1, ProductId = 3, Quantity = 1 });
+            db.OrderDetailsList.Add(new OrderDetails { OrderId = 1, ProductId = 5, Quantity = 15 });
+            db.OrderDetailsList.Add(new OrderDetails { OrderId = 2, ProductId = 1, Quantity = 1 });
+            db.OrderDetailsList.Add(new OrderDetails { OrderId = 2, ProductId = 3, Quantity = 1 });
+            db.OrderDetailsList.Add(new OrderDetails { OrderId = 2, ProductId = 4, Quantity = 1 });
+            db.OrderDetailsList.Add(new OrderDetails { OrderId = 3, ProductId = 2, Quantity = 1 });
             db.SaveChanges();
 
             var product1 = db.Products.Find(1);
@@ -94,9 +106,9 @@ namespace ShopDataBase
                 Console.WriteLine("- " + name);
             }
 
-            // запрос 1: вариант 1
+            //запрос 1: вариант 1
             var mostPopularProduct = db.Products
-                .OrderByDescending(p => p.OrderDetailsList.Count)
+                .OrderByDescending(p => p.OrderDetailsList.Sum(od => od.Quantity))
                 .Select(p => p.Name)
                 .FirstOrDefault();
 
@@ -105,63 +117,54 @@ namespace ShopDataBase
                 Console.WriteLine($"Наиболее популярный продукт: {mostPopularProduct}");
             }
 
-            // запрос 1: вариант 2
-            var products = db.Products.ToList();
-            
-            var ordersMaxCountByProducts = products
-                .Max(p => p.OrderDetailsList.Count);
+            //запрос 1: вариант 2
+            var maxProductUnitsCountSold = db.OrderDetailsList
+                .GroupBy(od => od.Product.Id)
+                .Max(g => g.Sum(od => od.Quantity));
 
-            var mostPopularProducts = products
-                .Where(p => p.OrderDetailsList.Count == ordersMaxCountByProducts)
+            var mostPopularProducts = db.Products
+                .Where(p => p.OrderDetailsList.Sum(od => od.Quantity) == maxProductUnitsCountSold)
                 .Select(p => p.Name);
 
-            Console.WriteLine("Наиболее популярный продукт: ");
+            Console.WriteLine("Наиболее популярные продукты:");
 
             foreach (var product in mostPopularProducts)
             {
-                Console.WriteLine(product);
+                Console.WriteLine($"{product}");
+
             }
 
-            // запрос 1: вариант 3
-            var mostPopularProduct1 = products
-                .OrderByDescending(p => p.OrderDetailsList.Count)
-                .Select(p => p.Name)
-                .FirstOrDefault();
-
-            if (mostPopularProduct1 != null)
-            {
-                Console.WriteLine($"Наиболее популярный продукт: {mostPopularProduct1}");
-            }
-
-            // запрос 2
+            //запрос 2
             var ordersTotalSumByClients = db.Customers
-                            .Include(c => c.Orders)
-                                .ThenInclude(o => o.OrderDetailsList)
-                            .ToDictionary(c => c, c => c.Orders
-                                .Select(o => o.OrderDetailsList
-                                    .Sum(od => od.Product.Price))
-                                .Sum());
+                .Select(c => new
+                {
+                    Customer = c,
+                    OrdersSum = c.Orders.SelectMany(o => o.OrderDetailsList.Select(od => od.Quantity * od.Product.Price)).Sum()
+                })
+                .ToList();
 
             Console.WriteLine("Общая сумма заказов по клиентам:");
 
             foreach (var c in ordersTotalSumByClients)
             {
-                Console.WriteLine($"{c.Key.FistName} {c.Key.LastName}: {c.Value} руб.");
+                Console.WriteLine($"{c.Customer.LastName}: {c.OrdersSum}");
+
             }
 
             // запрос 3
-            var ordersTotalSumByCategories = db.Categories
-                .Include(c => c.ProductCategories)
-                    .ThenInclude(pc => pc.Product)
-                .ToDictionary(c => c.Name, c => c.ProductCategories
-                    .Select(pc => pc.Product.OrderDetailsList.Count)
-                    .Sum());
+            var unitsSalesByCategories = db.Categories
+                .Select(c => new
+                {
+                    CategoryName = c.Name,
+                    UnitsSalesByCategory = c.ProductCategories.SelectMany(o => o.Product.OrderDetailsList.Select(od => od.Quantity)).Sum()
+                })
+                .ToList();
 
-            Console.WriteLine("Итого продаж по категориям:");
+            Console.WriteLine("Итоги продаж по категориям:");
 
-            foreach (var c in ordersTotalSumByCategories)
+            foreach (var c in unitsSalesByCategories)
             {
-                Console.WriteLine($"{c.Key} - {c.Value} шт.");
+                Console.WriteLine($"{c.CategoryName} - {c.UnitsSalesByCategory} шт.");
             }
         }
     }
