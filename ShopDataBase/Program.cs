@@ -131,7 +131,6 @@ namespace ShopDataBase
             foreach (var product in mostPopularProducts)
             {
                 Console.WriteLine($"{product}");
-
             }
 
             //запрос 2
@@ -148,7 +147,6 @@ namespace ShopDataBase
             foreach (var c in ordersTotalSumByClients)
             {
                 Console.WriteLine($"{c.Customer.LastName}: {c.OrdersSum}");
-
             }
 
             // запрос 3
