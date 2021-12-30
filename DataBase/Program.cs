@@ -69,7 +69,6 @@ namespace DataBase
                 {
                     Console.WriteLine("{0,-25} {1,8} {2,-25}", reader[0], reader[1], reader[2]);
                 }
-
             }
 
             var adapter = new SqlDataAdapter(productsSelectSqlQuery, connection);
