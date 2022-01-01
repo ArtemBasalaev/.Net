@@ -138,7 +138,7 @@ namespace ShopDataBase
                 .Select(c => new
                 {
                     Customer = c,
-                    OrdersSum = c.Orders.SelectMany(o => o.OrderDetailsList.Select(od => od.Quantity * od.Product.Price)).Sum()
+                    OrdersSum = c.Orders.SelectMany(o => o.OrderDetailsList).Sum(od => od.Quantity * od.Product.Price)
                 })
                 .ToList();
 
@@ -154,7 +154,7 @@ namespace ShopDataBase
                 .Select(c => new
                 {
                     CategoryName = c.Name,
-                    UnitsSalesByCategory = c.ProductCategories.SelectMany(o => o.Product.OrderDetailsList.Select(od => od.Quantity)).Sum()
+                    UnitsSalesByCategory = c.ProductCategories.SelectMany(o => o.Product.OrderDetailsList).Sum(od => od.Quantity)
                 })
                 .ToList();
 
