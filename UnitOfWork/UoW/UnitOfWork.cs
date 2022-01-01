@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Transactions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
@@ -6,7 +7,7 @@ namespace UnitOfWork.UoW
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private DbContext _db;
+        private readonly DbContext _db;
         private IDbContextTransaction _transaction;
 
         public UnitOfWork(DbContext db)
@@ -37,8 +38,7 @@ namespace UnitOfWork.UoW
         {
             if (_transaction != null)
             {
-                Console.WriteLine("Завершите текущую транзакцию");
-                return;
+                throw new TransactionException("Предыдущая транзакция не завершена");
             }
 
             _transaction = _db.Database.BeginTransaction();
